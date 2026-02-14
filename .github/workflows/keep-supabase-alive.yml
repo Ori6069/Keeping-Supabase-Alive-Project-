@@ -13,9 +13,9 @@ jobs:
       - name: Call Supabase REST endpoint
         run: |
           curl -s -o /dev/null -w "%{http_code}\n" \
-            "${SUPABASE_URL}/rest/v1/" \
-            -H "apikey: ${SUPABASE_ANON_KEY}" \
-            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}"
+  "${SUPABASE_URL}/rest/v1/posts?select=id&limit=1" \
+  -H "apikey: ${SUPABASE_ANON_KEY}" \
+  -H "Authorization: Bearer ${SUPABASE_ANON_KEY}"
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
